@@ -4,9 +4,9 @@
 using System.Globalization;
 
 string answer;
-int num1;
-int num2;
-int result1;
+float num1;
+float num2;
+float result1;
 
 
 
@@ -18,17 +18,19 @@ Console.WriteLine("3. Multiplication");
 Console.WriteLine("4. Division");
 Console.WriteLine("5. Exit");
 Console.WriteLine("Enter your choice: ");
-answer = Console.ReadLine();
+answer = Console.ReadLine().ToLower();
 
-if(answer == "5"){
+if (answer == "5")
+{
     Environment.Exit(0);
 }
 
 Console.WriteLine("Enter first number: ");
-num1 = Convert.ToInt32(Console.ReadLine());
+num1 = float.Parse(Console.ReadLine());
 
 Console.WriteLine("Enter second number: ");
-num2 = Convert.ToInt32(Console.ReadLine());
+num2 = float.Parse(Console.ReadLine());
+
 
 if (answer == "1")
 {
@@ -52,5 +54,17 @@ else if (answer == "4")
 }
 else
 {
-    Console.WriteLine("Invalid input");
+    result1 = num2 == 0 ? float.NaN : num1 / num2;
 }
+if (float.IsNaN(result1))
+{
+    Console.WriteLine("Cannot divide by zero");
+}
+else
+{
+    Console.WriteLine("Invalid input. Please try again.");
+}
+
+
+Console.ReadKey();
+
